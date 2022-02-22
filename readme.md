@@ -8,10 +8,10 @@ existentes, filtra-los e que no momento ainda esta em desenvolvimento para aplic
 dos novos conhecimentos que foram sendo obtidos a cerca do Angular. 
 
 ## Layout
-<img width="450" heigth="500" src="src/img/image1.png"> 
-<img width="450" heigth="500" src="src/img/image2.png"> 
-<img width="450" heigth="500" src="src/img/image3.png"> 
-<img width="450" heigth="500" src="src/img/image4.png"> 
+<img width="450" heigth="500" src="img/image1.png"> 
+<img width="450" heigth="500" src="img/image2.png"> 
+<img width="450" heigth="500" src="img/image3.png"> 
+<img width="450" heigth="500" src="img/image4.png"> 
 
 ## Tecnologias utilizadas
 Foram usadas apenas estruturação e desenvolvimento de linguagens e ferramenetas para Front-End
