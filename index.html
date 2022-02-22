@@ -1,0 +1,65 @@
+<html ng-app="listaTelefonica">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Telefônica</title>
+    <link rel="stylesheet" href="lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="lib/angular/angular.js"></script>
+    <script type="text/javascript" src="js/controllers/listaTelefonicaController.js"></script>
+</head>
+<body ng-controller="listaTelefonicaCtrl">
+    <div class="jumbotron container">
+        <h2>{{app}}</h2>
+
+        <input class="form-control" type="text" placeholder="Digite um dado para busca" ng-if="contatos.length > 0" ng-model="pesquisa"/>
+
+        <table class="table" ng-if="contatos.length > 0">
+            <tr>
+                <th><input type="checkbox" ng-model="selecionaTodos" ng-click="selecionarTodos(contatos)"/></th>
+                <th>
+                    <a href="" ng-click="ordenarPor('nome')">
+                        Nome
+                        <span ng-show="campoOrdenacao == '+nome'" class="glyphicon glyphicon-sort-by-attributes"></span>
+                        <span ng-show="campoOrdenacao == '-nome'" class="glyphicon glyphicon-sort-by-attributes-alt"></span>
+                    </a>
+                </th>
+                <th><a href="" ng-click="ordenarPor('telefone')">Telefone</a></th>
+                <th><a href="" ng-click="ordenarPor('operadora')">Operadora</a></th>
+                <th><a href="" ng-click="ordenarPor('data')">Data Criação</a></th>
+            </tr>
+            <tr ng-class="{'selecionado negrito': contato.selecionado}" ng-repeat="contato in contatos | filter:pesquisa | orderBy: campoOrdenacao">
+                <td><input type="checkbox" ng-model="contato.selecionado"/></td>
+                <td>{{contato.nome}}</td>
+                <td>{{contato.telefone}}</td>
+                <td>{{contato.operadora.nome}}</td>
+                <td>{{contato.data | date: 'dd/MM/yyyy'}}</td>
+            </tr>
+        </table>
+
+        <hr/>
+
+        <form name="contatoForm">
+            <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" ng-model="contato.nome" ng-required="true"/>
+            <input class="form-control" type="text" id="telefone" name="telefone" placeholder="Telefone" ng-model="contato.telefone" ng-required="true" ng-pattern="/^\d{7}-\d{4}$/"/>
+            <select class="form-control" ng-model="contato.operadora" ng-options="operadora.nome group by operadora.categoria for operadora in operadoras | orderBy:'nome'" ng-required="true">
+                <option value="">Selecione uma operadora</option>
+            </select>
+        </form>
+
+        <div class="alertaErro alert-danger" role="alert" ng-show="mensagemRodape">
+            {{mensagemRodape}}	
+        </div>
+        
+        <div ng-show="contatoForm.telefone.$error.pattern" class="alert alert-danger">
+            Preencha corretamente. Ex DDxxxxx-xxxx.
+        </div>
+
+        <button class="btn btn-success btn-block" ng-disabled="contatoForm.$invalid" ng-click="adicionarContato(contato)">Adicionar Contato</button>
+        <button class="btn btn-danger btn-block" ng-disabled="!isContatoSelecionado(contatos)" ng-click="apagarContatos(contatos)">Apagar Contatos</button>
+    
+        <div ng-include="'footer.html'"></div>
+    </div>
+</body>
+</html>
