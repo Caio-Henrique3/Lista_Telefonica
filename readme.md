@@ -5,7 +5,8 @@ Este projeto tem como finalidade desenvolvimento e aprendizado dos conceitos do 
 Work Angular Js.
 Nele temos uma lista telefônica, onde se pode adicionar novos contatos, apagar os já
 existentes, filtra-los e que no momento ainda esta em desenvolvimento para aplicação
-dos novos conhecimentos que foram sendo obtidos a cerca do Angular. 
+dos novos conhecimentos que foram sendo obtidos a cerca do Angular. Acesse a aplicação 
+pelo link https://listatelefonica.netlify.app/
 
 ## Layout
 <img width="450" heigth="500" src="img/image1.png"> 
